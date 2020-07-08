@@ -30,6 +30,7 @@ func Run(ctx context.Context, port string) error {
 	r.Post("/", controller.HandleWriteBlock(s))
 
 	// Launch http server
+	log.Printf("Server listening on port: '%s'", port)
 	err := http.ListenAndServe(":"+port, r)
 	if err != nil {
 		log.Printf("Cannot launch http server: '%v'", err)
