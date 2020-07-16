@@ -1,0 +1,47 @@
+# all available settings of specific linters
+run:
+  tests: true
+linters-settings:
+  govet:
+    check-shadowing: true # report about shadowed variables
+  golint:
+    min-confidence: 0.8 # minimal confidence for issues, default is 0.8
+  gofmt:
+    simplify: true # simplify code: gofmt with `-s` option, true by default
+  gocyclo:
+    min-complexity: 10 # minimal code complexity to report, 30 by default (but we recommend 10-20)
+  maligned:
+    suggest-new: true # print struct with more effective memory layout or not, false by default
+  goconst:
+    min-len: 3 # minimal length of string constant, 3 by default
+    min-occurrences: 3 # minimal occurrences count to trigger, 3 by default
+  unused:
+    # treat code as a program (not a library) and report unused exported identifiers; default is false.
+    # XXX: if you enable this setting, unused will report a lot of false-positives in text editors:
+    # if it's called for subdir of a project it can't find funcs usages. All text editor integrations
+    # with golangci-lint call it on a directory with the changed file.
+    check-exported: false
+linters:
+  enable:
+    - deadcode
+    - goconst
+    - gocyclo
+    - gofmt
+    - golint
+    - gosimple
+    - govet
+    - ineffassign
+    - maligned
+    - staticcheck
+    - structcheck
+    - typecheck
+    - unconvert
+    - unused
+    - varcheck
+    - goimports
+  enable-all: false
+  disable-all: true
+  presets:
+  fast: false
+issues:
+  exclude-use-default: false # Disable golangci-lint stuffing gosec and etc

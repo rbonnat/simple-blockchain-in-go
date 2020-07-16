@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+
+  simple-blockchain:
+    image: simple-blockchain-dev
+    container_name: simple-blockchain
+    ports:
+      - '8080:8080'
